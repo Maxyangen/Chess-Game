@@ -43,50 +43,50 @@ public class ChessBoard{
                 if(board[i][j] < 16){
                     switch (weight[i][j]){
                     case 0:    
-                        chesses[i][j] = cf.getKing(PlayerEnum.PLAYER1 , i , j );//Chess(PlayerEnum.PLAYER1, chess , ChessEnum.KING , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] = cf.getKing(PlayerEnum.PLAYER1 , i , j );
                         break;
                     case 1:
-                        chesses[i][j] = cf.getGuards(PlayerEnum.PLAYER1 , i , j);//Chess(PlayerEnum.PLAYER1, chess , ChessEnum.GUARDS , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] = cf.getGuards(PlayerEnum.PLAYER1 , i , j);
                         break;
                     case 2:
-                        chesses[i][j] = cf.getBishop(PlayerEnum.PLAYER1 , i , j);//Chess(PlayerEnum.PLAYER1, chess , ChessEnum.BISHOP , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] = cf.getBishop(PlayerEnum.PLAYER1 , i , j);
                         break;
                     case 3:
-                        chesses[i][j] = cf.getChariot(PlayerEnum.PLAYER1 , i , j);//Chess(PlayerEnum.PLAYER1, chess , ChessEnum.CHARIOT , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] = cf.getChariot(PlayerEnum.PLAYER1 , i , j);
                         break;
                     case 4:
-                        chesses[i][j] = cf.getHorse(PlayerEnum.PLAYER1 , i , j);//Chess(PlayerEnum.PLAYER1, chess , ChessEnum.HORSE , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] = cf.getHorse(PlayerEnum.PLAYER1 , i , j);
                         break;  
                     case 5:
-                        chesses[i][j] =  cf.getGun(PlayerEnum.PLAYER1 , i , j);//Chess(PlayerEnum.PLAYER1, chess , ChessEnum.GUN , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =  cf.getGun(PlayerEnum.PLAYER1 , i , j);
                         break;
                     case 6:
-                        chesses[i][j] = cf.getSoldier(PlayerEnum.PLAYER1 , i , j);// Chess(PlayerEnum.PLAYER1, chess , ChessEnum.SOLDIER , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] = cf.getSoldier(PlayerEnum.PLAYER1 , i , j);
                         break;
                     }
                 }
                 else if(board[i][j]>15 && board[i][j] < 32){
                     switch (weight[i][j]){
                     case 0:    
-                        chesses[i][j] =  cf.getKing(PlayerEnum.PLAYER2 , i , j);//Chess(PlayerEnum.PLAYER2, chess , ChessEnum.KING , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =  cf.getKing(PlayerEnum.PLAYER2 , i , j);
                         break;
                     case 1:
-                        chesses[i][j] =  cf.getGuards(PlayerEnum.PLAYER2 , i , j);//Chess(PlayerEnum.PLAYER2, chess , ChessEnum.GUARDS , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =  cf.getGuards(PlayerEnum.PLAYER2 , i , j);;
                         break;
                     case 2:
-                        chesses[i][j] =  cf.getBishop(PlayerEnum.PLAYER2 , i , j);//Chess(PlayerEnum.PLAYER2, chess , ChessEnum.BISHOP , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =  cf.getBishop(PlayerEnum.PLAYER2 , i , j);
                         break;
                     case 3:
-                        chesses[i][j] =  cf.getChariot(PlayerEnum.PLAYER2 , i , j);// Chess(PlayerEnum.PLAYER2, chess , ChessEnum.CHARIOT , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =  cf.getChariot(PlayerEnum.PLAYER2 , i , j);
                         break;
                     case 4:
-                        chesses[i][j] =  cf.getHorse(PlayerEnum.PLAYER2 , i , j);//Chess(PlayerEnum.PLAYER2, chess , ChessEnum.HORSE , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =  cf.getHorse(PlayerEnum.PLAYER2 , i , j);
                         break;  
                     case 5:
-                        chesses[i][j] =  cf.getGun(PlayerEnum.PLAYER2 , i , j);//Chess(PlayerEnum.PLAYER2, chess , ChessEnum.GUN , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =  cf.getGun(PlayerEnum.PLAYER2 , i , j);
                         break;
                     case 6:
-                        chesses[i][j] =   cf.getSoldier(PlayerEnum.PLAYER2 , i , j);//Chess(PlayerEnum.PLAYER2, chess , ChessEnum.SOLDIER , chessIcon[board[i][j]],weight[i][j],i,j);
+                        chesses[i][j] =   cf.getSoldier(PlayerEnum.PLAYER2 , i , j);
                         break;
                     }
                 }
@@ -99,7 +99,70 @@ public class ChessBoard{
         img = chesses[x][y].getImage();
         return img;
     }
-    public void touchChess(int x , int y){
+   
+    public void setBoardRound(PlayerEnum player){
+        this.player = player;
+    }
+    public PlayerEnum getBoardRound(){
+        return player;
+    }
+    public boolean getBoardCheck(int x , int y){
+        check = chesses[x][y].getCheck();
+        return check;
+    }
+    public void setBoardCheck(int x , int y){
+        chesses[x][y].setCheck(true);
+    }
+    public void restFocaus(){
+        for ( i = 0 ; i < 4; i++)
+                for ( j = 0 ;j < 8;j++)
+                    if(chesses[i][j] != null)
+                        chesses[i][j].setChessFocaus(false);
+    }
+    public int getChessweight(int x , int y){
+        return chesses[x][y].getChessWeight();
+    }
+    public int[][] getBoard(){ //棋子
+        return board;
+    }
+   public int[][] getWeight(){ //權重
+        return weight;
+    }
+    public int getX(int x , int y){
+        return chesses[x][y].getChessX();
+    }
+    public int getY(int x , int y){
+        return chesses[x][y].getChessY();
+    }
+    public void ShowImage(){
+        int x = 0;
+        for ( i = 0 ; i < 32 ; i++ ){
+            if(i>0 &&i<11){
+                chessIcon[i] = new ImageIcon("chesspic//"+(i+1)/2+".png");
+                chessChoiceIcon[(i+1)/2] = new ImageIcon("chesspic//0"+(i+1)/2+".png");
+            }
+            if(i>10 && i<16){
+                chessIcon[i] = new ImageIcon("chesspic//"+6+".png");
+                chessChoiceIcon[6] = new ImageIcon("chesspic//0"+6+".png");
+            }
+            if(i>16 &&i<27){
+                chessIcon[i] = new ImageIcon("chesspic//"+(i-1)/2+".png");
+                chessChoiceIcon[(i-1)/2] = new ImageIcon("chesspic//0"+(i-1)/2+".png");
+
+            }
+            if(i>26 && i<32){
+                chessIcon[i] = new ImageIcon("chesspic//"+13+".png");
+                chessChoiceIcon[13] = new ImageIcon("chesspic//0"+13+".png");
+            }
+            if(i==0 || i==16){
+                chessIcon[i] = new ImageIcon("chesspic//"+i%9+".png");   
+                chessChoiceIcon[i%9] = new ImageIcon("chesspic//0"+i%9+".png");
+            }
+
+           
+        }
+   }
+   public void touchChess(int x , int y){
         if ( chesses[x][y] == null && (sum%2 == 0) && which == false){
           if (  ( Math.abs( x - (int)focussedDimension.getWidth()) + Math.abs(y - (int)focussedDimension.getHeight()) ) < 2){
               if(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessFocaus() == true){
@@ -298,68 +361,5 @@ public class ChessBoard{
         
         
     }
-   
-    public void setBoardRound(PlayerEnum player){
-        this.player = player;
-    }
-    public PlayerEnum getBoardRound(){
-        return player;
-    }
-    public boolean getBoardCheck(int x , int y){
-        check = chesses[x][y].getCheck();
-        return check;
-    }
-    public void setBoardCheck(int x , int y){
-        chesses[x][y].setCheck(true);
-    }
-    public void restFocaus(){
-        for ( i = 0 ; i < 4; i++)
-                for ( j = 0 ;j < 8;j++)
-                    if(chesses[i][j] != null)
-                        chesses[i][j].setChessFocaus(false);
-    }
-    public int getChessweight(int x , int y){
-        return chesses[x][y].getChessWeight();
-    }
-    public int[][] getBoard(){ //棋子
-        return board;
-    }
-   public int[][] getWeight(){ //權重
-        return weight;
-    }
-    public int getX(int x , int y){
-        return chesses[x][y].getChessX();
-    }
-    public int getY(int x , int y){
-        return chesses[x][y].getChessY();
-    }
-    public void ShowImage(){
-        int x = 0;
-        for ( i = 0 ; i < 32 ; i++ ){
-            if(i>0 &&i<11){
-                chessIcon[i] = new ImageIcon("chesspic//"+(i+1)/2+".png");
-                chessChoiceIcon[(i+1)/2] = new ImageIcon("chesspic//0"+(i+1)/2+".png");
-            }
-            if(i>10 && i<16){
-                chessIcon[i] = new ImageIcon("chesspic//"+6+".png");
-                chessChoiceIcon[6] = new ImageIcon("chesspic//0"+6+".png");
-            }
-            if(i>16 &&i<27){
-                chessIcon[i] = new ImageIcon("chesspic//"+(i-1)/2+".png");
-                chessChoiceIcon[(i-1)/2] = new ImageIcon("chesspic//0"+(i-1)/2+".png");
-
-            }
-            if(i>26 && i<32){
-                chessIcon[i] = new ImageIcon("chesspic//"+13+".png");
-                chessChoiceIcon[13] = new ImageIcon("chesspic//0"+13+".png");
-            }
-            if(i==0 || i==16){
-                chessIcon[i] = new ImageIcon("chesspic//"+i%9+".png");   
-                chessChoiceIcon[i%9] = new ImageIcon("chesspic//0"+i%9+".png");
-            }
-
-           
-        }
-   }
 }
 
