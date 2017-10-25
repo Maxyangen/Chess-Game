@@ -6,16 +6,10 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 public class View
 {
-    private ChessBoard chessboard ;//= ChessBoard.getChessBoard();
-    private Chess chess;
+    private ChessBoard chessboard ;
     private JFrame parent;
-    private JPanel p;
     private JButton[][] JB = new JButton[4][8];
     private int i , j , x , y;
-    private ImageIcon chessIcon ;
-    private int[][] ba =new int[4][8]; //棋子
-    private int[][] b  = new int[4][8]; //全中
-    
   
     public View(){
         chessboard = ChessBoard.getChessBoard();
@@ -44,7 +38,6 @@ public class View
         
         cp.setLayout(new FlowLayout(FlowLayout.LEFT));
         
-        //ba = chessboard.getBoard();
        ActionListener listener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -53,7 +46,6 @@ public class View
                 for (j = 0;j < 8;j++){
                     if (JB[i][j] == jbtemp){
                         if (JB[i][j] == jbtemp){
-                            //JOptionPane.showMessageDialog(null , "案到了" + i +" " + j);
                             chessboard.touchChess(i,j);
                             break;
                             }   
@@ -66,7 +58,6 @@ public class View
 
         for(i = 0;i < 4;i++){
             for (j = 0;j < 8;j++){
-                //chessIcon = new ImageIcon("chesspic//"+36+".png");
                  JB[i][j] = new JButton(chessboard.getChessImage(i,j));
                  
                 }
@@ -86,9 +77,10 @@ public class View
         }
         
     }
-  
+ 
 
   }
     
+   
 
  

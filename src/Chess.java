@@ -8,8 +8,6 @@ public class Chess
     private ChessEnum chesstype;
     private ImageIcon chessimg , cimg;
     private static ImageIcon noCheck =  new ImageIcon("chesspic//"+36+".png");
-    private ImageIcon[] chessIcon = new ImageIcon[32];
-    private ImageIcon[] chessChoiceIcon = new ImageIcon[32];
     private PlayerEnum player;
     private ChessAction chessaction;
     private boolean focaus;

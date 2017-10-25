@@ -3,12 +3,8 @@ import java.util.*;
 public class RandomChess
 {
     int[] TotalChess = new int[32];
-    int[] BlackChess= new int[16];
-    int[] RedChess = new int[16];
     int[][] BoardChess =new int[4][8];
     int[][] ChessWeight = new int[4][8];
-    private boolean[] BlackCheck = new boolean[16];
-    private boolean[] RedCheck = new boolean[16];
     private int r1 , r2;
     private int i , j;
     

@@ -9,11 +9,10 @@ public class ChessBoard{
     private ChessAction chess;
     private ImageIcon img;
     private PlayerEnum player;
-    private int x , y , focus , who = 0 , sum = 0 ,eat=0 ,cfo=0 , fly = 0 , tot = 0;
-    private boolean canmove = false;
+    private int who=0,sum=0,eat=0,tot = 0;
     private int i , j ;
     private static int count = 0;
-    private boolean check  , which , Eat;
+    private boolean check,which,Eat,canmove = false;
     private int[][] board = new int[4][8];
     private int[][] weight = new int[4][8];
     private ImageIcon[] chessIcon = new ImageIcon[32];
@@ -25,6 +24,7 @@ public class ChessBoard{
         System.out.println("ChessBoardFuck");
         board = rd.InBoard(); 
         weight = rd.weight();
+        
         setChess(new StdChessFactory());
     }
     
@@ -35,71 +35,54 @@ public class ChessBoard{
         }
         return instance;
     }
-
+    
     public void setChess(ChessFactory cf){
         //ChessFactory bbpp = new StdChessFactory();
         for( i = 0;i < 4;i++){
             for ( j = 0;j < 8;j++){
                 if(board[i][j] < 16){
-                    switch (weight[i][j]){
-                    case 0:    
-                        chesses[i][j] = cf.getKing(PlayerEnum.PLAYER1 , i , j );
-                        break;
-                    case 1:
-                        chesses[i][j] = cf.getGuards(PlayerEnum.PLAYER1 , i , j);
-                        break;
-                    case 2:
-                        chesses[i][j] = cf.getBishop(PlayerEnum.PLAYER1 , i , j);
-                        break;
-                    case 3:
-                        chesses[i][j] = cf.getChariot(PlayerEnum.PLAYER1 , i , j);
-                        break;
-                    case 4:
-                        chesses[i][j] = cf.getHorse(PlayerEnum.PLAYER1 , i , j);
-                        break;  
-                    case 5:
-                        chesses[i][j] =  cf.getGun(PlayerEnum.PLAYER1 , i , j);
-                        break;
-                    case 6:
-                        chesses[i][j] = cf.getSoldier(PlayerEnum.PLAYER1 , i , j);
-                        break;
-                    }
+                    setChessFactory(cf,PlayerEnum.PLAYER1,i,j,weight[i][j]);
+                    
                 }
                 else if(board[i][j]>15 && board[i][j] < 32){
-                    switch (weight[i][j]){
-                    case 0:    
-                        chesses[i][j] =  cf.getKing(PlayerEnum.PLAYER2 , i , j);
-                        break;
-                    case 1:
-                        chesses[i][j] =  cf.getGuards(PlayerEnum.PLAYER2 , i , j);;
-                        break;
-                    case 2:
-                        chesses[i][j] =  cf.getBishop(PlayerEnum.PLAYER2 , i , j);
-                        break;
-                    case 3:
-                        chesses[i][j] =  cf.getChariot(PlayerEnum.PLAYER2 , i , j);
-                        break;
-                    case 4:
-                        chesses[i][j] =  cf.getHorse(PlayerEnum.PLAYER2 , i , j);
-                        break;  
-                    case 5:
-                        chesses[i][j] =  cf.getGun(PlayerEnum.PLAYER2 , i , j);
-                        break;
-                    case 6:
-                        chesses[i][j] =   cf.getSoldier(PlayerEnum.PLAYER2 , i , j);
-                        break;
-                    }
+                    setChessFactory(cf,PlayerEnum.PLAYER2,i,j,weight[i][j]);
                 }
             }
         }
     }
+    
     public ImageIcon getChessImage(int x , int y){
         if(chesses[x][y] == null)
             return null;
         img = chesses[x][y].getImage();
         return img;
     }
-   
+   private void setChessFactory(ChessFactory cf,PlayerEnum player,int i,int j,int weight){
+        switch (weight){
+                    case 0:    
+                        chesses[i][j] =  cf.getKing(player , i , j);
+                        break;
+                    case 1:
+                        chesses[i][j] =  cf.getGuards(player , i , j);
+                        break;
+                    case 2:
+                        chesses[i][j] =  cf.getBishop(player , i , j);
+                        break;
+                    case 3:
+                        chesses[i][j] =  cf.getChariot(player , i , j);
+                        break;
+                    case 4:
+                        chesses[i][j] =  cf.getHorse(player , i , j);
+                        break;  
+                    case 5:
+                        chesses[i][j] =  cf.getGun( player, i , j);
+                        break;
+                    case 6:
+                        chesses[i][j] =   cf.getSoldier(player , i , j);
+                        break;
+                    }
+        
+    }
     public void setBoardRound(PlayerEnum player){
         this.player = player;
     }
@@ -163,6 +146,7 @@ public class ChessBoard{
         }
    }
    public void touchChess(int x , int y){
+      
         if ( chesses[x][y] == null && (sum%2 == 0) && which == false){
           if (  ( Math.abs( x - (int)focussedDimension.getWidth()) + Math.abs(y - (int)focussedDimension.getHeight()) ) < 2){
               if(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessFocaus() == true){
@@ -255,7 +239,6 @@ public class ChessBoard{
         
               if (tot == 2){
                    canmove = true;
-                   fly = 1;
                 }
               else 
                    canmove = false;
@@ -276,10 +259,11 @@ public class ChessBoard{
                   restFocaus();
               }
        
+             
               else if(chesses[x][y].getChessWeight() >= chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight()){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                
+                 
                   sum++;
                   eat = 1;
                   restFocaus();
@@ -290,7 +274,7 @@ public class ChessBoard{
           }
         
         
-         
+           
                
         }
         else if(  eat == 0  && (chesses[x][y].getRound() == PlayerEnum.PLAYER1  && (sum%2 == 1) &&  which == true && chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessFocaus() == true) ){  //上一個是Player1且他要吃Player2的棋子
@@ -337,12 +321,12 @@ public class ChessBoard{
               else if(chesses[x][y].getChessWeight() == 0 && chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight() == 6 ){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                 
+                  
                   sum++;
                   eat = 1;
                   restFocaus();
               }
-              
+               
               else if(chesses[x][y].getChessWeight() >= chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight()){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
@@ -355,7 +339,7 @@ public class ChessBoard{
           else{
             restFocaus();
           }
-          
+           
                
         }
         
