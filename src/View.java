@@ -15,8 +15,7 @@ public class View
     private ImageIcon chessIcon ;
     private int[][] ba =new int[4][8]; //棋子
     private int[][] b  = new int[4][8]; //全中
-    /*ImageIcon[] chessIcon = new ImageIcon[32];
-    ImageIcon[][] CI=new ImageIcon[4][8];*/
+    
   
     public View(){
         chessboard = ChessBoard.getChessBoard();
@@ -87,44 +86,9 @@ public class View
         }
         
     }
-   /* public void ShowImage(){
-        int x = 0;
-        for (int i = 0 ; i < 32 ; i++ ){
-            if(i>0 &&i<11){
-                chessIcon[i] = new ImageIcon("chesspic//"+(i+1)/2+".png");
-
-            }
-            if(i>10 && i<16){
-                chessIcon[i] = new ImageIcon("chesspic//"+6+".png");
-            }
-            
-            if(i>16 &&i<27){
-                chessIcon[i] = new ImageIcon("chesspic//"+(i-1)/2+".png");
-
-            }
-            if(i>26 && i<32){
-                chessIcon[i] = new ImageIcon("chesspic//"+13+".png");
-            }
-            if(i==0 || i==16){
-                chessIcon[i] = new ImageIcon("chesspic//"+i%9+".png");                
-            }
-
-           
-        }*/
+  
 
   }
     
-    
-   /* public class MultiListener implements ActionListener {
-    
-        button1.addActionListener(this);
-        button2.addActionListener(this);
- 
-        button2.addActionListener(new Eavesdropper(bottomTextArea));
-    }
- 
-    public void actionPerformed(ActionEvent e) {
-        topTextArea.append(e.getActionCommand() + newline);
-    }*/
 
  

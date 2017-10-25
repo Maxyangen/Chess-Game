@@ -14,11 +14,7 @@ public class OneStep extends ChessAction
       //差一點點
       chessx = chess.getChessX();
       chessy = chess.getChessY();
-     /*for (int i = 0 ; i<4; i ++){
-        for (int j = 0 ; j < 8; j++)
-            System.out.print(bdw[i][j] + " ");
-        System.out.println();
-      }*/
+     
       System.out.print(chessboard.getChessweight(chessx,chessy));
       System.out.print(chessboard.getChessweight(movex,movey));
        if (Math.abs(chessx - movex) <= 1 && Math.abs(chessy - movey) <= 1) //看是不是在上下左右1格

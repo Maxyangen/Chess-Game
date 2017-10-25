@@ -105,8 +105,7 @@ public class ChessBoard{
               if(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessFocaus() == true){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                  /* weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;
-                   * weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();*/
+                  
                    sum++;
                    restFocaus();
                 }
@@ -119,8 +118,7 @@ public class ChessBoard{
               if(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessFocaus() == true){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                  /*weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;
-                   * weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();*/
+                  
                    sum++;
                    restFocaus();
                 }
@@ -209,28 +207,16 @@ public class ChessBoard{
               else if(chesses[x][y].getChessWeight() == 0 && chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight() == 6 ){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                 /* weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();
-                  weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;*/
+                 
                   sum++;
                   eat = 1;
                   restFocaus();
               }
        
-              /*                     else if(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight()==5 && fly == 1){
-                chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
-                  chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                  weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;
-                  weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();
-                  sum++;
-                  eat = 1;
-                  fly = 0;
-                  restFocaus();
-              }*/
               else if(chesses[x][y].getChessWeight() >= chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight()){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                 /* weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();
-                  weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;*/
+                
                   sum++;
                   eat = 1;
                   restFocaus();
@@ -241,22 +227,7 @@ public class ChessBoard{
           }
         
         
-           //board[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 33;
-           //比賓忠還長 好喔我想想
-         /* Eat = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessAction().canMove(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] , x , y);
-          System.out.println(Eat);
-           if (Eat ){
-               chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
-               //哦~~~~~
-               chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-               //哦~~~~~有障礙
-               board[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 33;
-                sum++;
-                eat = 1;
-               restFocaus();
-           }
-           else
-               restFocaus();*/
+         
                
         }
         else if(  eat == 0  && (chesses[x][y].getRound() == PlayerEnum.PLAYER1  && (sum%2 == 1) &&  which == true && chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessFocaus() == true) ){  //上一個是Player1且他要吃Player2的棋子
@@ -303,27 +274,16 @@ public class ChessBoard{
               else if(chesses[x][y].getChessWeight() == 0 && chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight() == 6 ){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                  /*weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();
-                  weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;*/
+                 
                   sum++;
                   eat = 1;
                   restFocaus();
               }
-               /*else if(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight()==5 && fly == 1){
-                chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
-                  chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                  weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;
-                  weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();
-                  sum++;
-                  eat = 1;
-                  fly = 0;
-                  restFocaus();
-                }*/
+              
               else if(chesses[x][y].getChessWeight() >= chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight()){
                   chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
                   chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-                  /*weight[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight();
-                  weight[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 8;*/
+                  
                   sum++;
                   eat = 1;
                   restFocaus();
@@ -332,23 +292,7 @@ public class ChessBoard{
           else{
             restFocaus();
           }
-           //board[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 33;
-           
-           //比賓忠還長 好喔我想想
-          /* Eat = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessAction().canMove(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] , x , y);
-           System.out.println(Eat);
-           if (Eat ){
-              chesses[x][y] = chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()];
-               //哦~~~~~
-              chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = null ;
-               //哦~~~~~有障礙
-              board[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()] = 33;
-              sum++;
-              eat = 1;
-              restFocaus();
-           }
-           else
-               restFocaus();*/
+          
                
         }
         
@@ -418,43 +362,4 @@ public class ChessBoard{
         }
    }
 }
-/*if(chesses[(int)focussedDimension.getWidth()][(int)focussedDimension.getHeight()].getChessWeight() == 5){
-          if (Math.abs(x　 - (int)focussedDimension.getWidth()) <= 1 && Math.abs(y - movey) <= 1) //看是不是在上下左右1格
-                canmove = true;
-          else 
-               canmove = false;
-          if ( chessx == movex  || chessy == movey ){
-              if(chessy > movey){
-                  for ( i = chessy ; i > movey; i--)
-                    if(bd[chessx][i] != 33)
-                        sum++;          
-               }
-                else if (chessy < movey){
-                    for ( i = chessy ; i < movey; i++)
-                        if(bd[chessx][i] != 33)
-                        sum++;          
-               }
-               else if (chessx > movex){
-                   for ( i = chessx ; i > movex; i--)
-                    if(bd[i][chessy] != 33)
-                        sum++;
-                }
-                else if (chessx < movex){
-                    for ( i = chessx ; i < movex; i++)
-                        if(bd[i][chessy] != 33)
-                            sum++;
-                }
-        
-              if (sum == 2){
-                   canmove = true;
-                }
-              else 
-                   canmove = false;
-             }
-          }
-          else{
-             if (Math.abs(x　 - (int)focussedDimension.getWidth()) <= 1 && Math.abs(y - movey) <= 1) //看是不是在上下左右1格
-                canmove = true;}
-         else 
-               canmove = false;
-            }*/
+

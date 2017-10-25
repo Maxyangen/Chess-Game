@@ -51,14 +51,13 @@ public class Flying extends ActionDecorator
         else if( (bd[chessx][chessy] > 15 && bd[chessx][chessy] <32) && (bd[movex][movey] >15 && bd[movex][movey] <32) ) //同色
             can = false;
         else if( bd[chessx][chessy] <16 && ( bd[movex][movey] >15 &&bd[movex][movey]<32 ) ){ //異色   能不能吃
-            //if( bdw[chessx][chessy] <= bdw[movex][movey] )
+            
                 can = true;
         }
        else if( ( bd[chessx][chessy] >15 &&  bd[chessx][chessy]<32 ) && bd[movex][movey] <16  ){ //異色   能不能吃
-            //if( bdw[chessx][chessy] <= bdw[movex][movey] )
+            
                 can = true;
-           /* else
-                can = false;*/
+           
         }        
      }
      else can = false;    
